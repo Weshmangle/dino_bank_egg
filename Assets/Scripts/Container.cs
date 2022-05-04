@@ -35,6 +35,11 @@ public class Container : MonoBehaviour
         return currentCountDino == limit; 
     }
 
+    public float NextCost()
+    {
+        return cost * data.factorCost;
+    }
+
     public void LevelUp()
     {
         var costNextLevel = cost * data.factorCost;

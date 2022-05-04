@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance;
 
-    [SerializeField] private GameObject prefab;
+    [SerializeField] public GameObject prefab;
     [SerializeField] public GameObject spawnPoint;
     
     [SerializeField] public List<GameObject> dinosInstanciated;

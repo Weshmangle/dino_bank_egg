@@ -5,28 +5,35 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField]private List<DataDino> _listOfDinos = new List<DataDino>();
+    public static Shop Instance;
+    [SerializeField] private List<DataDino> _listOfDinos = new List<DataDino>();
 
     private int _indexOfActualDino;
     
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         SortListByCost();
         _indexOfActualDino = 0;
-        GameManager.Instance.incomePerSeconde = _listOfDinos[_indexOfActualDino].moneyPerSecond;
-        GameManager.Instance.valueOfDino = _listOfDinos[_indexOfActualDino].moneyPerSecond;
     }
 
-    private void Update()
+    public DataDino GetNextDataDino()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if(_indexOfActualDino + 1 > _listOfDinos.Count)
         {
-            BuyNextDino();
+            return null;
+        }
+        else
+        {
+            return _listOfDinos[_indexOfActualDino + 1];
         }
     }
 
-    private void BuyNextDino()
+    public void BuyNextDino()
     {
         if (_indexOfActualDino+1 >= _listOfDinos.Count)
         {
@@ -42,7 +49,7 @@ public class Shop : MonoBehaviour
         
         _indexOfActualDino++;
         Debug.Log($"Bien joué vous avez acheté le dino suivant : {_listOfDinos[_indexOfActualDino].nameDino}.");
-        GameManager.Instance.valueOfDino = _listOfDinos[_indexOfActualDino].moneyPerSecond;
+        SpawnManager.Instance.prefab.GetComponent<Dino>().data = _listOfDinos[_indexOfActualDino];
         GameManager.Instance.incomeTotal -= _listOfDinos[_indexOfActualDino].costOfDino;
     }
 
@@ -50,7 +57,7 @@ public class Shop : MonoBehaviour
     {
         for (int i = 0; i < _listOfDinos.Count; i++)
         {
-            for (int j = i+1; j < _listOfDinos.Count-1; j++)
+            for (int j = i+1; j < _listOfDinos.Count; j++)
             {
                 if (_listOfDinos[i].costOfDino > _listOfDinos[j].costOfDino)
                 {

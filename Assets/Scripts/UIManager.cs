@@ -33,8 +33,10 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        var container = GameManager.Instance.container;
         UIManager.Instance.buttonAddDino.interactable = containerWillBeFull();
-        containerCount.text = GameManager.Instance.container.currentCountDino + " / " + GameManager.Instance.container.limit;
+        containerCount.text = container.currentCountDino + " / " + container.limit;
+        buttonUpContainer.GetComponentInChildren<Text>().text = $" Up Container {Mathf.FloorToInt(container.cost * container.data.factorCost)}$ ";
     }
 
     private bool containerWillBeFull()

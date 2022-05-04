@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SimpleDino
   m_EditorClassIdentifier: 
   nameDino: Dino
-  moneyPerSecond: 0.63
+  moneyPerSecond: 0.13

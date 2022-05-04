@@ -37,15 +37,17 @@ public class Container : MonoBehaviour
 
     public void LevelUp()
     {
-        if(GameManager.Instance.incomeTotal > (data.cost * data.factorCost))
+        var costNextLevel = cost * data.factorCost;
+        
+        if(GameManager.Instance.incomeTotal > costNextLevel)
         {
-            cost = cost * data.factorCost;
+            cost = costNextLevel;
             limit = Mathf.FloorToInt(limit * data.factorLimit);
-            GameManager.Instance.incomeTotal = GameManager.Instance.incomeTotal - data.cost * data.factorCost;
+            GameManager.Instance.incomeTotal = GameManager.Instance.incomeTotal - costNextLevel;
         }
         else
         {
-            Debug.Log("No enough money "+ (data.cost * data.factorCost));
+            Debug.Log("No enough money " + costNextLevel);
         }
     }
 }

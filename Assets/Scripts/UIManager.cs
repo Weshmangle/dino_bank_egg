@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     protected void buttonClickAddDino()
     {
         SpawnManager.Instance.SpawnDino();
-    }
+    }   
 
     private void Update()
     {

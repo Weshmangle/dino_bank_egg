@@ -5,15 +5,8 @@ using UnityEngine;
 
 public class Dino : MonoBehaviour
 {
-    [SerializeField] private float m_speed;
-    private Rigidbody _rigidbody;
     private Vector3 target;
     [SerializeField] public DataDino data;
-
-    private void Start()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
 
     private void Update()
     {
@@ -25,10 +18,5 @@ public class Dino : MonoBehaviour
             SpawnManager.Instance.dinosInstanciated.Remove(gameObject);
             Destroy(gameObject);
         }
-    }
-
-    private void Movement()
-    {
-        _rigidbody.velocity = Vector3.forward * m_speed * Time.deltaTime;
     }
 }

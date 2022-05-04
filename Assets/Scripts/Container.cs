@@ -18,7 +18,7 @@ public class Container : MonoBehaviour
         cost = data.cost;
     }
 
-    public void addDino()
+    public void AddDinoToContainer()
     {
         if(!isFull())
         {

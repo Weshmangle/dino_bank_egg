@@ -14,7 +14,6 @@ public class SpawnManager : MonoBehaviour
     {
         Instance = this;
     }
-    
 
     public void SpawnDino()
     {

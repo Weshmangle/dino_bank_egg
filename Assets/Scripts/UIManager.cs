@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     public void RefreshValues(Dino dino)
     {
         GameManager.Instance.countDino++;
-        GameManager.Instance.incomePerSeconde += dino.data.moneyPerSecond;
+        GameManager.Instance.incomePerSeconde += GameManager.Instance.valueOfDino;
 
         countDino.text = "Spawn : " + GameManager.Instance.countDino;
         incomePerSecond.text = "Income : " + GameManager.Instance.incomePerSeconde + " $/s";

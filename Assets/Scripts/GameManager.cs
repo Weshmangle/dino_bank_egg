@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] public GameObject _objectif;
     public int countDino;
+    public float valueOfDino = 0;
     public float incomePerSeconde;
     public float incomeTotal;
     
-    private void Start()
+    private void Awake()
     {
         Instance = this;
     }

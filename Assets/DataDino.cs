@@ -8,4 +8,5 @@ public class DataDino : ScriptableObject
 {
     public string nameDino;
     public float moneyPerSecond;
+    public float costOfDino;
 }

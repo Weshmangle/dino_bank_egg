@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject _objectif;
     public int countDino;
     public float valueOfDino = 0;
-    public float incomePerSeconde;
+    public float incomePerSeconde = 0;
     public float incomeTotal;
     public Container container;
 
@@ -28,8 +28,7 @@ public class GameManager : MonoBehaviour
     public void AddDino(Dino dino)
     {
         countDino++;
-        incomePerSeconde += dino.data.moneyPerSecond;
-        container.addDino();
+        container.AddDinoToContainer();
     }
 
     public void GotoDestination(GameObject dino)

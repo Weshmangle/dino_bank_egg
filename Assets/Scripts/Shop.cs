@@ -14,7 +14,7 @@ public class Shop : MonoBehaviour
     {
         SortListByCost();
         _indexOfActualDino = 0;
-        //GameManager.Instance.incomePerSeconde = _listOfDinos[_indexOfActualDino].moneyPerSecond;
+        GameManager.Instance.incomePerSeconde = _listOfDinos[_indexOfActualDino].moneyPerSecond;
         GameManager.Instance.valueOfDino = _listOfDinos[_indexOfActualDino].moneyPerSecond;
     }
 

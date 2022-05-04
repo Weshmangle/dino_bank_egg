@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbe3ca02-81c3-4059-9aa5-c82d1a062bb4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/DataDino.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DataDino.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.dino_bank_egg/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dino_bank_egg/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/StevenScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/StevenScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Dino.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Dino.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Container.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shop.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleDino.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleDino.asset.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +20,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shop.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://D:/Users/Antoine/Documents/GitHub/DinoBank_Clone/dino_bank_egg/Assets/DataDino.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Editor/UI/GridLayoutGroupEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.4.8/Editor/treeview/TimelineClipUnion.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="28hC1ISKZSt6abSLq4pyDI9AP7r" />
   <component name="ProjectViewState">
@@ -67,7 +68,7 @@
       <option name="presentableId" value="Default" />
       <updated>1651659218774</updated>
       <workItem from="1651659223647" duration="581000" />
-      <workItem from="1651667897333" duration="4335000" />
+      <workItem from="1651667897333" duration="6153000" />
     </task>
     <servers />
   </component>

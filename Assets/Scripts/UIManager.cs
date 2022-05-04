@@ -33,7 +33,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        GameManager.Instance.countDino++;
         GameManager.Instance.incomePerSeconde += GameManager.Instance.valueOfDino;
         var container = GameManager.Instance.container;
         UIManager.Instance.buttonAddDino.interactable = containerWillBeFull();

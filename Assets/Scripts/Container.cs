@@ -4,16 +4,48 @@ using UnityEngine;
 
 public class Container : MonoBehaviour
 {
-    private int currentCountDino;
-    private int countMaxDino;
-     
-    void Start()
+    public int currentCountDino;
+    
+    public int limit;
+    public float cost;
+
+    public DataContainer data;
+
+    private void Awake()
     {
-        
+        currentCountDino = 0;
+        limit = data.limit;
+        cost = data.cost;
     }
 
-    void Update()
+    public void addDino()
     {
-        
+        if(!isFull())
+        {
+            currentCountDino++;
+        }
+        else
+        {
+            throw new UnityException("Container is full");
+        }
+    }
+
+    public bool isFull()
+    {
+        return currentCountDino == limit; 
+    }
+
+    public void LevelUp()
+    {
+        if(GameManager.Instance.incomeTotal > (data.cost * data.factorCost))
+        {
+            cost = cost * data.factorCost;
+            limit = Mathf.FloorToInt(limit * data.factorLimit);
+            GameManager.Instance.incomeTotal = GameManager.Instance.incomeTotal - data.cost * data.factorCost;
+        }
+        else
+        {
+            Debug.Log("No enough money "+ (data.cost * data.factorCost));
+        }
     }
 }

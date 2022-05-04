@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,23 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] private Button button;
+    [SerializeField] public Button buttonAddDino;
+    [SerializeField] public Button buttonUpContainer;
     public Text countDino;
+    public Text containerCount;
     public Text incomePerSecond;
     public Text income;
    
     void Start()
     {
         Instance = this;
-        button.onClick.AddListener(buttonClickAddDino);
+        buttonAddDino.onClick.AddListener(buttonClickAddDino);
+        buttonUpContainer.onClick.AddListener(buttonLevelContainer);
+    }
+
+    private void buttonLevelContainer()
+    {
+        GameManager.Instance.container.LevelUp();
     }
 
     protected void buttonClickAddDino()
@@ -22,12 +31,26 @@ public class UIManager : MonoBehaviour
         SpawnManager.Instance.SpawnDino();
     }
 
-    public void RefreshValues(Dino dino)
+    private void Update()
     {
         GameManager.Instance.countDino++;
         GameManager.Instance.incomePerSeconde += GameManager.Instance.valueOfDino;
+        var container = GameManager.Instance.container;
+        UIManager.Instance.buttonAddDino.interactable = containerWillBeFull();
+        containerCount.text = container.currentCountDino + " / " + container.limit;
+        buttonUpContainer.GetComponentInChildren<Text>().text = $" Up Container {Mathf.FloorToInt(container.cost * container.data.factorCost)}$ ";
+    }
 
-        countDino.text = "Spawn : " + GameManager.Instance.countDino;
+    private bool containerWillBeFull()
+    {
+        var container = GameManager.Instance.container;
+        return !(container.isFull() || 
+        container.currentCountDino + SpawnManager.Instance.dinosInstanciated.Count >= container.limit);
+    }
+
+    public void Refresh()
+    {
+        countDino.text = "Dinos : " + GameManager.Instance.countDino;
         incomePerSecond.text = "Income : " + GameManager.Instance.incomePerSeconde + " $/s";
     }
 }

@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
     public float valueOfDino = 0;
     public float incomePerSeconde;
     public float incomeTotal;
-    
+    public Container container;
+
     private void Awake()
     {
         Instance = this;
@@ -21,7 +22,14 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         incomeTotal += incomePerSeconde * Time.deltaTime;
-        UIManager.Instance.income.text = GameManager.Instance.incomeTotal.ToString();
+        UIManager.Instance.income.text = incomeTotal + " $";
+    }
+
+    public void AddDino(Dino dino)
+    {
+        countDino++;
+        incomePerSeconde += dino.data.moneyPerSecond;
+        container.addDino();
     }
 
     public void GotoDestination(GameObject dino)

@@ -8,7 +8,6 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject spawnPoint;
-    [SerializeField] public List<GameObject> dinosSpawned;
     
     private void Awake()
     {
@@ -22,7 +21,6 @@ public class SpawnManager : MonoBehaviour
         var z = Random.Range(-.1f,.1f);
 
         GameObject instance = Instantiate(prefab, spawnPoint.transform.position + new Vector3(x, y, z), spawnPoint.transform.rotation);
-        dinosSpawned.Add(instance);
 
         GameManager.Instance.GotoDestination(instance);
     }

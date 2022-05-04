@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 20005198928201354}
   - component: {fileID: 5448848114223405748}
   - component: {fileID: 8160635058986219221}
+  - component: {fileID: 6395645796756790151}
   m_Layer: 0
   m_Name: Dino
   m_TagString: Untagged
@@ -135,3 +136,17 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6395645796756790151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975195223898482874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd385323032bad448473630515e86b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 0
+  data: {fileID: 11400000, guid: 7dc7e9827ae435a49bde401ff6e8fcf4, type: 2}

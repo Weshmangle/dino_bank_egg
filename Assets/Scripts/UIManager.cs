@@ -5,19 +5,29 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     [SerializeField] private Button button;
-    [SerializeField] private Text text;
-    private int countEnclosure;
-       
+    public Text countDino;
+    public Text incomePerSecond;
+    public Text income;
+   
     void Start()
     {
+        Instance = this;
         button.onClick.AddListener(buttonClickAddDino);
     }
 
     protected void buttonClickAddDino()
     {
         SpawnManager.Instance.SpawnDino();
-        countEnclosure++;
-        text.text = "Spawn : " + countEnclosure;
+    }
+
+    public void RefreshValues(Dino dino)
+    {
+        GameManager.Instance.countDino++;
+        GameManager.Instance.incomePerSeconde += dino.data.moneyPerSecond;
+
+        countDino.text = "Spawn : " + GameManager.Instance.countDino;
+        incomePerSecond.text = "Income : " + GameManager.Instance.incomePerSeconde + " $/s";
     }
 }

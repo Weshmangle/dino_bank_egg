@@ -20,7 +20,9 @@ public class Dino : MonoBehaviour
         Vector3 pos = GameManager.Instance._objectif.transform.position - transform.position;
         if(pos.magnitude < 0.2)
         {
-            UIManager.Instance.RefreshValues(this);
+            GameManager.Instance.AddDino(this);
+            UIManager.Instance.Refresh();
+            SpawnManager.Instance.dinosInstanciated.Remove(gameObject);
             Destroy(gameObject);
         }
     }

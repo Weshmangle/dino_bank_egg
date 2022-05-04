@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] private Button button;
+    [SerializeField] public Button buttonAddDino;
     public Text countDino;
     public Text incomePerSecond;
     public Text income;
@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        button.onClick.AddListener(buttonClickAddDino);
+        buttonAddDino.onClick.AddListener(buttonClickAddDino);
     }
 
     protected void buttonClickAddDino()
@@ -22,11 +22,20 @@ public class UIManager : MonoBehaviour
         SpawnManager.Instance.SpawnDino();
     }
 
-    public void RefreshValues(Dino dino)
+    private void Update()
     {
-        GameManager.Instance.countDino++;
-        GameManager.Instance.incomePerSeconde += dino.data.moneyPerSecond;
+        UIManager.Instance.buttonAddDino.interactable = containerWillBeFull();
+    }
 
+    private bool containerWillBeFull()
+    {
+        var container = GameManager.Instance.container;
+        return !(container.isFull() || 
+        container.currentCountDino + SpawnManager.Instance.dinosInstanciated.Count >= container.countMaxDino); 
+    }
+
+    public void Refresh()
+    {
         countDino.text = "Spawn : " + GameManager.Instance.countDino;
         incomePerSecond.text = "Income : " + GameManager.Instance.incomePerSeconde + " $/s";
     }

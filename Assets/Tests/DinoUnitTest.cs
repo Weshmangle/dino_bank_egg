@@ -19,31 +19,6 @@ public class DinoUnitTest
         container.currentCountDino = 0;
         container.limit = container.data.limit;
     }
-
-    /*Spawn MANAGER*/
-
-    //SpawnDino
-
-
-    /*SHOP*/
-
-    //GetNextDino
-
-    //BuyNextDino
-
-    //SortListByCost
-
-
-    /*GAME MANAGER*/
-
-    //AddDino
-
-    //GoToDestination
-
-
-    /*CONTAINER*/
-
-    //AddDinoToContainer
     
     [Test]
     public void ContainerIsFullAfterAddMMaxDinoUnitTestWithEnumeratorPasses()

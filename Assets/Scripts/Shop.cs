@@ -19,7 +19,7 @@ namespace DinoSpace
 
         private void Start()
         {
-            SortListByCost();
+            SortListByCost(_listOfDinos);
             _indexOfActualDino = 0;
         }
 
@@ -43,7 +43,7 @@ namespace DinoSpace
                 return;
             }
 
-            if (GameManager.Instance.incomeTotal < _listOfDinos[_indexOfActualDino + 1].costOfDino)
+            if (GameManager.Instance.GetIncomeTotal() < _listOfDinos[_indexOfActualDino + 1].costOfDino)
             {
                 Debug.Log("Vous n'avez pas assez d'argent !");
                 return;
@@ -55,18 +55,33 @@ namespace DinoSpace
             GameManager.Instance.incomeTotal -= _listOfDinos[_indexOfActualDino].costOfDino;
         }
 
-        private void SortListByCost()
+        public void SortListByCost(List<DataDino> _list)
         {
-            for (int i = 0; i < _listOfDinos.Count; i++)
+            for (int i = 0; i < _list.Count; i++)
             {
-                for (int j = i + 1; j < _listOfDinos.Count; j++)
+                for (int j = i + 1; j < _list.Count; j++)
                 {
-                    if (_listOfDinos[i].costOfDino > _listOfDinos[j].costOfDino)
+                    if (_list[i].costOfDino > _list[j].costOfDino)
                     {
-                        (_listOfDinos[i], _listOfDinos[j]) = (_listOfDinos[j], _listOfDinos[i]);
+                        (_list[i], _list[j]) = (_list[j], _list[i]);
                     }
                 }
             }
+        }
+
+        public int GetIndexOfActualDino()
+        {
+            return _indexOfActualDino;
+        }
+
+        public void SetIndexOfActualDino(int newIndex)
+        {
+            _indexOfActualDino = newIndex;
+        }
+
+        public List<DataDino> GetListDino()
+        {
+            return _listOfDinos;
         }
     }
 }

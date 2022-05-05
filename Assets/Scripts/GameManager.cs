@@ -37,5 +37,15 @@ namespace DinoSpace
         {
             dino.GetComponent<NavMeshAgent>().SetDestination(_objectif.transform.position);
         }
+
+        public float GetIncomeTotal()
+        {
+            return incomeTotal;
+        }
+
+        public void SetIncomeTotal(float newIncomeTotal)
+        {
+            incomeTotal = newIncomeTotal;
+        }
     }
 }

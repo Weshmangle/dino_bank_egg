@@ -3,65 +3,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shop : MonoBehaviour
+namespace DinoSpace
 {
-    public static Shop Instance;
-    [SerializeField] private List<DataDino> _listOfDinos = new List<DataDino>();
-
-    private int _indexOfActualDino;
-    
-    private void Awake()
+    public class Shop : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static Shop Instance;
+        [SerializeField] private List<DataDino> _listOfDinos = new List<DataDino>();
 
-    private void Start()
-    {
-        SortListByCost();
-        _indexOfActualDino = 0;
-    }
+        private int _indexOfActualDino;
 
-    public DataDino GetNextDataDino()
-    {
-        if(_indexOfActualDino + 1 > _listOfDinos.Count)
+        private void Awake()
         {
-            return null;
-        }
-        else
-        {
-            return _listOfDinos[_indexOfActualDino + 1];
-        }
-    }
-
-    public void BuyNextDino()
-    {
-        if (_indexOfActualDino+1 >= _listOfDinos.Count)
-        {
-            Debug.Log("Vous avez déjà atteint le meilleur dino !");
-            return;
+            Instance = this;
         }
 
-        if (GameManager.Instance.incomeTotal < _listOfDinos[_indexOfActualDino+1].costOfDino)
+        private void Start()
         {
-            Debug.Log("Vous n'avez pas assez d'argent !");
-            return;
+            SortListByCost();
+            _indexOfActualDino = 0;
         }
-        
-        _indexOfActualDino++;
-        Debug.Log($"Bien joué vous avez acheté le dino suivant : {_listOfDinos[_indexOfActualDino].nameDino}.");
-        SpawnManager.Instance.prefab.GetComponent<Dino>().data = _listOfDinos[_indexOfActualDino];
-        GameManager.Instance.incomeTotal -= _listOfDinos[_indexOfActualDino].costOfDino;
-    }
 
-    private void SortListByCost()
-    {
-        for (int i = 0; i < _listOfDinos.Count; i++)
+        public DataDino GetNextDataDino()
         {
-            for (int j = i+1; j < _listOfDinos.Count; j++)
+            if (_indexOfActualDino + 1 > _listOfDinos.Count)
             {
-                if (_listOfDinos[i].costOfDino > _listOfDinos[j].costOfDino)
+                return null;
+            }
+            else
+            {
+                return _listOfDinos[_indexOfActualDino + 1];
+            }
+        }
+
+        public void BuyNextDino()
+        {
+            if (_indexOfActualDino + 1 >= _listOfDinos.Count)
+            {
+                Debug.Log("Vous avez déjà atteint le meilleur dino !");
+                return;
+            }
+
+            if (GameManager.Instance.incomeTotal < _listOfDinos[_indexOfActualDino + 1].costOfDino)
+            {
+                Debug.Log("Vous n'avez pas assez d'argent !");
+                return;
+            }
+
+            _indexOfActualDino++;
+            Debug.Log($"Bien joué vous avez acheté le dino suivant : {_listOfDinos[_indexOfActualDino].nameDino}.");
+            SpawnManager.Instance.prefab.GetComponent<Dino>().data = _listOfDinos[_indexOfActualDino];
+            GameManager.Instance.incomeTotal -= _listOfDinos[_indexOfActualDino].costOfDino;
+        }
+
+        private void SortListByCost()
+        {
+            for (int i = 0; i < _listOfDinos.Count; i++)
+            {
+                for (int j = i + 1; j < _listOfDinos.Count; j++)
                 {
-                    (_listOfDinos[i], _listOfDinos[j]) = (_listOfDinos[j], _listOfDinos[i]);
+                    if (_listOfDinos[i].costOfDino > _listOfDinos[j].costOfDino)
+                    {
+                        (_listOfDinos[i], _listOfDinos[j]) = (_listOfDinos[j], _listOfDinos[i]);
+                    }
                 }
             }
         }

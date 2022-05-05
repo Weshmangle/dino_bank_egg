@@ -3,18 +3,48 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using DinoSpace;
 
 public class DinoUnitTest
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void DinoUnitTestSimplePasses()
+    List<DataDino> _listOfDinos;
+    [SetUp]
+    public void Setup()
     {
-        // Use the Assert class to test conditions
+
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
+    /*Spawn MANAGER*/
+
+    //SpawnDino
+
+
+    /*SHOP*/
+
+    //GetNextDino
+
+    //BuyNextDino
+
+    //SortListByCost
+
+
+    /*GAME MANAGER*/
+
+    //AddDino
+
+    //GoToDestination
+
+
+    /*CONTAINER*/
+
+    //AddDinoToContainer
+
+    //IsFull
+
+    //NextCost
+
+    //LevelUp
+
     [UnityTest]
     public IEnumerator DinoUnitTestWithEnumeratorPasses()
     {
@@ -22,4 +52,5 @@ public class DinoUnitTest
         // Use yield to skip a frame.
         yield return null;
     }
+
 }

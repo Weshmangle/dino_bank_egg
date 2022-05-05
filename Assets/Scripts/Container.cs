@@ -2,57 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Container : MonoBehaviour
+namespace DinoSpace
 {
-    public int currentCountDino;
-    
-    public int limit;
-    public float cost;
-
-    public DataContainer data;
-
-    private void Awake()
+    public class Container : MonoBehaviour
     {
-        currentCountDino = 0;
-        limit = data.limit;
-        cost = data.cost;
-    }
+        public int currentCountDino;
 
-    public void AddDinoToContainer()
-    {
-        if(!isFull())
+        public int limit;
+        public float cost;
+
+        public DataContainer data;
+
+        private void Awake()
         {
-            currentCountDino++;
+            currentCountDino = 0;
+            limit = data.limit;
+            cost = data.cost;
         }
-        else
+
+        public void AddDinoToContainer()
         {
-            throw new UnityException("Container is full");
+            if (!isFull())
+            {
+                currentCountDino++;
+            }
+            else
+            {
+                throw new UnityException("Container is full");
+            }
         }
-    }
 
-    public bool isFull()
-    {
-        return currentCountDino == limit; 
-    }
-
-    public float NextCost()
-    {
-        return cost * data.factorCost;
-    }
-
-    public void LevelUp()
-    {
-        var costNextLevel = cost * data.factorCost;
-        
-        if(GameManager.Instance.incomeTotal > costNextLevel)
+        public bool isFull()
         {
-            cost = costNextLevel;
-            limit = Mathf.FloorToInt(limit * data.factorLimit);
-            GameManager.Instance.incomeTotal = GameManager.Instance.incomeTotal - costNextLevel;
+            return currentCountDino == limit;
         }
-        else
+
+        public float NextCost()
         {
-            Debug.Log("No enough money " + costNextLevel);
+            return cost * data.factorCost;
+        }
+
+        public void LevelUp()
+        {
+            var costNextLevel = cost * data.factorCost;
+
+            if (GameManager.Instance.incomeTotal > costNextLevel)
+            {
+                cost = costNextLevel;
+                limit = Mathf.FloorToInt(limit * data.factorLimit);
+                GameManager.Instance.incomeTotal = GameManager.Instance.incomeTotal - costNextLevel;
+            }
+            else
+            {
+                Debug.Log("No enough money " + costNextLevel);
+            }
         }
     }
 }

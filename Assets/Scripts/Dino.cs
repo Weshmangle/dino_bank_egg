@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dino : MonoBehaviour
+namespace DinoSpace
 {
-    private Vector3 target;
-    [SerializeField] public DataDino data;
-
-    private void Update()
+    public class Dino : MonoBehaviour
     {
-        Vector3 pos = GameManager.Instance._objectif.transform.position - transform.position;
-        if(pos.magnitude < 0.2)
+        private Vector3 target;
+        [SerializeField] public DataDino data;
+
+        private void Update()
         {
-            GameManager.Instance.AddDino(this);
-            UIManager.Instance.Refresh();
-            SpawnManager.Instance.dinosInstanciated.Remove(gameObject);
-            Destroy(gameObject);
+            Vector3 pos = GameManager.Instance._objectif.transform.position - transform.position;
+            if (pos.magnitude < 0.2)
+            {
+                GameManager.Instance.AddDino(this);
+                UIManager.Instance.Refresh();
+                SpawnManager.Instance.dinosInstanciated.Remove(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }
